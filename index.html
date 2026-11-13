@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Murree Hotels Web GIS</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- top bar -->
+  <div id="top">
+    <div>
+      <h1>Hotels and Tourist Accommodation in Murree</h1>
+      <p>Web GIS using PostgreSQL / PostGIS, Flask API and Leaflet</p>
+    </div>
+    <button id="add_btn" onclick="start_add()">+ Add Hotel</button>
+  </div>
+
+  <div id="main">
+
+    <!-- side panel -->
+    <div id="side">
+      <div class="info">
+        <b>About Murree</b><br>
+        Murree is a hill station in Punjab, Pakistan, near Islamabad. It is about 2,300 m high.
+        It is famous for cold weather and snow in winter, so many tourists stay in its hotels every year.
+      </div>
+
+      <div id="cards">
+        <div class="card"><span id="total_num">0</span><small>Total hotels</small></div>
+        <div class="card"><span id="shown_num">0</span><small>On map now</small></div>
+      </div>
+
+      <input id="search" type="text" placeholder="Search hotel name..." oninput="show_hotels()">
+      <div id="chips"></div>
+      <div id="list"></div>
+    </div>
+
+    <!-- map -->
+    <div id="map"></div>
+  </div>
+
+  <!-- form to add a new hotel -->
+  <div id="form_box">
+    <div id="form">
+      <h3>Add New Hotel</h3>
+
+      <label>Name *</label>
+      <input id="f_name" type="text">
+
+      <label>Type</label>
+      <select id="f_type">
+        <option value="hotel">hotel</option>
+        <option value="guest house">guest_house</option>
+        <option value="hostel">hostel</option>
+        <option value="motel">motel</option>
+        <option value="resort">resort</option>
+      </select>
+
+      <label>Phone</label>
+      <input id="f_phone" type="text">
+
+      <label>Website</label>
+      <input id="f_website" type="text">
+
+      <label>Location (from map click)</label>
+      <input id="f_place" type="text" disabled>
+
+      <div class="row">
+        <button id="cancel_btn" onclick="close_form()">Cancel</button>
+        <button id="save_btn" onclick="save_hotel()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="msg"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
